@@ -51,7 +51,6 @@ const blogs = [
   },
 ];
 test('dummy returns one', () => {
-  // eslint-disable-next-line no-shadow
   const blogs = [];
 
   const result = listHelper.dummy(blogs);

@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "moduleResolution": "Node",
+        "target": "ES2021",
+        "strictNullChecks": true,
+        "strictFunctionTypes": true
+    },
+    "typeAcquisition": {
+        "include": [
+            "node",
+            "express",
+            "jest",
+            "mongoose"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+        "**/node_modules/*"
+    ]
+}
