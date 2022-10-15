@@ -2,7 +2,7 @@ const Blog = require('../models/blog');
 
 const initialBlogs = [
   {
-    title: 'r2',
+    title: 'r1',
     author: 'Anne Figueroa',
     url: 'http://coka.ie/ifoho',
     likes: 5
@@ -20,7 +20,6 @@ const initialBlogs = [
     likes: 10
   }
 ];
-
 const blogsInDb = async () => {
   const blogs = await Blog.find({});
   return blogs.map(blog => blog.toJSON());

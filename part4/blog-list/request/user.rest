@@ -1,0 +1,21 @@
+
+@hostname = localhost
+@port = 3003
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+
+# get all users
+GET http://{{host}}/api/users
+
+###
+
+# create new user
+POST http://{{host}}/api/users
+Content-Type: {{contentType}}
+
+{
+    "username":"Hulda Gibssbs",
+    "name":"Kyle Moss",
+    "password":"5Jb8tR"
+}
+

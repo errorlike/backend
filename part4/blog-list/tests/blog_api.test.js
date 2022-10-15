@@ -50,18 +50,40 @@ test('deletion of a note', async () => {
   const blogAtStart = await helper.blogsInDb();
   const blogToDelete = blogAtStart[0];
 
-  console.log(`/api/blogs/${blogToDelete.id}`);
   await api
     .delete(`/api/blogs/${blogToDelete.id}`)
     .expect(204);
-  //length
   const blogAtEnd = await helper.blogsInDb();
   expect(blogAtEnd).toHaveLength(helper.initialBlogs.length - 1);
-  //content
-  
+
   const urls = blogAtEnd.map(blog => blog.url);
   console.log(urls);
   expect(urls).not.toContain(blogToDelete.url);
+
+});
+
+test('update a blog likes', async () => {
+
+  const blogAtStart = await helper.blogsInDb();
+  const updatedLikes = {
+    likes: blogAtStart[0].likes + 5
+  };
+
+  const recetivedBlog = {
+    ...blogAtStart[0],
+    ...updatedLikes
+  };
+
+
+  await api
+    .put(`/api/blogs/${blogAtStart[0].id}`)
+    .send(updatedLikes)
+    .expect(200)
+    .expect(recetivedBlog);
+
+  const blogAtEnd = await helper.blogsInDb();
+
+  expect(blogAtEnd[0].likes).toBe(updatedLikes.likes);
 
 });
 afterAll(() => {

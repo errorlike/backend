@@ -1,0 +1,16 @@
+# get all users
+GET http://localhost:3003/api/blogs HTTP/1.1
+###
+
+#create new blog
+
+POST http://localhost:3003/api/blogs HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "n2n",
+    "author": "yyd",
+    "url": "hljlwel",
+    "likes": 1,
+    "user": "6349836b5897037fed4550c8"
+}
