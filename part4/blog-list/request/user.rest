@@ -14,8 +14,8 @@ POST http://{{host}}/api/users
 Content-Type: {{contentType}}
 
 {
-    "username":"Hulda Gibssbs",
-    "name":"Kyle Moss",
-    "password":"5Jb8tR"
+    "username":"Helen Willis",
+    "name":"yydasdf",
+    "password":"fweqfqqewf"
 }
 

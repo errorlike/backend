@@ -2,4 +2,6 @@
     "dotenv.enableAutocloaking": false,
     "editor.parameterHints.enabled": false,
     "jestrunner.jestCommand": "npm test --",
+    "editor.tabSize": 2,
+    "cSpell.enabled": true
 }

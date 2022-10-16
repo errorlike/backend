@@ -6,11 +6,11 @@ GET http://localhost:3003/api/blogs HTTP/1.1
 
 POST http://localhost:3003/api/blogs HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Inl5ZCIsImlkIjoiNjM0YWM2NzU2OTg4NDIzYTU5MGE4ZTkyIiwiaWF0IjoxNjY1OTEwNDMzfQ.lsIoJsmhqdTEWP8Vej_Nwyv6oE2PJnWarIeCFxkMvM
 
 {
-    "title": "n2n",
-    "author": "yyd",
-    "url": "hljlwel",
-    "likes": 1,
-    "user": "6349836b5897037fed4550c8"
+    "title": "asdf",
+    "author": "yysdfa",
+    "url": "http://asavod.net/uj",
+    "likes": 1
 }
