@@ -10,12 +10,12 @@ GET http://{{host}}/api/users
 ###
 
 # create new user
+
 POST http://{{host}}/api/users
 Content-Type: {{contentType}}
 
 {
-    "username":"Helen Willis",
-    "name":"yydasdf",
-    "password":"fweqfqqewf"
+    "username":"Ruth Keller",
+    "name":"Richard Gilbert",
+    "password":"123456"
 }
-
