@@ -3,6 +3,7 @@ require('express-async-errors');
 const jwt = require('jsonwebtoken');
 const Blog = require('../models/blog');
 const User = require('../models/user');
+const Comment = require('../models/comment');
 const getTokenFrom = request => {
   const authorization = request.get('authorization');
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
@@ -11,7 +12,7 @@ const getTokenFrom = request => {
   return null;
 };
 blogRouter.get('/', async (request, response) => {
-  const blogs = await Blog.find({}).populate('user');
+  const blogs = await Blog.find({}).populate('user', { username: 1, name: 1, id: 1 }).populate('comments');
   response.json(blogs);
 });
 
@@ -30,7 +31,7 @@ blogRouter.post('/', async (request, response) => {
     likes: request.body.likes || 0,
     user: user.id
   });
-  const savedBlog = await (await blog.save()).populate('user');
+  const savedBlog = await blog.save();
   console.log(savedBlog);
   user.blogs = user.blogs.concat(savedBlog._id);
   await user.save();
@@ -51,6 +52,24 @@ blogRouter.put('/:id', async (request, response) => {
 
   const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true });
   response.json(updatedBlog);
+});
+
+blogRouter.post('/:id/comments', async (request, response) => {
+  const body = request.body;
+  const id = request.params.id;
+
+  const comment = new Comment(
+    {
+      ...body
+    }
+  );
+  const savedComment = await comment.save();
+  console.log(savedComment);
+  const blog = await Blog.findById(id);
+  blog.comments = blog.comments.concat(savedComment._id);
+  await blog.save();
+  response.status(201).json(savedComment);
+
 });
 
 module.exports = blogRouter;
